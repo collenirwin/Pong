@@ -1,0 +1,9 @@
+E:\School2017.1\Prog\pong\pong\bin\Debug\pong.exe.config
+E:\School2017.1\Prog\pong\pong\bin\Debug\pong.exe
+E:\School2017.1\Prog\pong\pong\bin\Debug\pong.pdb
+E:\School2017.1\Prog\pong\pong\obj\Debug\pong.csprojResolveAssemblyReference.cache
+E:\School2017.1\Prog\pong\pong\obj\Debug\pong.Form1.resources
+E:\School2017.1\Prog\pong\pong\obj\Debug\pong.Properties.Resources.resources
+E:\School2017.1\Prog\pong\pong\obj\Debug\pong.csproj.GenerateResource.Cache
+E:\School2017.1\Prog\pong\pong\obj\Debug\pong.exe
+E:\School2017.1\Prog\pong\pong\obj\Debug\pong.pdb
