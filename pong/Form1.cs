@@ -27,6 +27,7 @@ namespace pong {
             InitializeComponent();
         }
 
+        // "game loop" timer
         private void tmrMain_Tick(object sender, EventArgs e) {
 
             // moving the player's paddle
@@ -44,14 +45,19 @@ namespace pong {
                 player.Top += PADDLE_SPEED;
             }
 
+            // if the ball is hit by a paddle,
+            // reverse the x direction of the ball
             if (ballHit()) {
                 ballDirection.X = -ballDirection.X;
             }
 
+            // if the ball bounces off the floor or ceiling,
+            // reverse the y direction of the ball
             if (ballBounced()) {
                 ballDirection.Y = -ballDirection.Y;
             }
 
+            // check for goals
             if (playerScored()) {
                 playerPoints++;
                 reset();
@@ -60,9 +66,11 @@ namespace pong {
                 reset();
             }
 
+            // move the ball
             ball.Left += ballDirection.X;
             ball.Top  += ballDirection.Y;
 
+            // move the ai paddle toward the ball
             decideAIDirection();
             if (aiDirection == Direction.up) {
                 ai.Top -= AI_SPEED;
@@ -72,25 +80,34 @@ namespace pong {
         }
 
         private bool ballHit() {
+            // did the ball hit a paddle?
             return ball.Bounds.IntersectsWith(player.Bounds) || ball.Bounds.IntersectsWith(ai.Bounds);
         }
 
         private bool ballBounced() {
+            // did the ball hit a wall?
             return ball.Top <= 0 || (ball.Top + (ball.Height * 3)) >= this.Height;
         }
 
         private bool playerScored() {
+            // is the ball in the ai's goal?
             return ball.Left >= this.Width;
         }
 
         private bool aiScored() {
+            // is the ball in the player's goal?
             return ball.Left <= 0;
         }
 
         private void reset() {
+            // put the ball in the center
             ball.Location = new Point(368, 189);
+
+            // set the ball moving toward the player
             ballDirection.X = -BALL_SPEED;
             ballDirection.Y = -BALL_SPEED;
+
+            // update the scoreboard label with the current scores
             updateScores();
         }
 
@@ -99,6 +116,7 @@ namespace pong {
         }
 
         private void decideAIDirection() {
+            // move the ai's paddle toward the ball (along the y-axis)
             if (ai.Top == ball.Top) {
                 aiDirection = Direction.none;
             } else if (ai.Top > ball.Top) {
